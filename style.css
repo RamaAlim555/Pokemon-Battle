@@ -1,0 +1,97 @@
+.bg-arena
+{
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+progress {
+    -webkit-appearance:none;
+    appearance: none;
+    width: 250px;
+    height: 20px;
+}
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-style: inset;
+    border-color: black;
+    border-radius: 10px;
+  }
+
+  progress[class="lowHP"]::-webkit-progress-value { background: rgb(255, 0, 0); }
+  progress[class="mediumHP"]::-webkit-progress-value { background: rgb(255, 255, 0); }
+  progress[class="highHP"]::-webkit-progress-value { background: rgb(0, 255, 8); }
+
+
+h1{
+    color:rgb(255, 255, 255)
+}
+
+img[id="player"] {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  .btnBG
+  {
+    background-color: rgb(142, 129, 129);
+    background-size: auto;
+    border-style: inset;
+    border-color: black;
+    border-collapse: 10px;
+  }
+
+  button {
+    border-radius: 20px;
+    border-width: 5px;
+    border-color: black;
+    color: rgb(0, 0, 0);
+    transition-duration: 0.25s;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+    padding-right: 15px;
+    width: 200px;
+    height: 100px;
+  }
+  button:hover {
+    border-color: #000000; /* Green */
+    background-color: rgb(0, 255, 47);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+  }
+
+  footer
+  {
+    background: rgba(0, 0, 0, 0.899);
+    text-align: center;
+    color: rgb(25, 0, 255);
+    border-style: inset;
+    border-color: rgb(25, 0, 255);
+  }
+  nav
+  {
+    border-style: inset;
+    border-color: blue;
+  }
+
+  /* Move Type Button Color Setting*/
+button[class="fireTypeMove"]
+{
+    background-image: linear-gradient(to right, rgb(255, 0, 0),rgba(255, 145, 0, 0.9),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0),rgba(255, 0, 0, 0));
+}
+
+button[class="flyingTypeMove"]
+{
+    background-image: linear-gradient(to right, rgb(190, 195, 255),rgba(170, 190, 255, 0.9),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0),rgba(255, 0, 0, 0));
+}
+
+button[class="normalTypeMove"]
+{
+    background-image: linear-gradient(to right, rgb(255, 255, 255),rgba(255, 255, 255, 0.9),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0),rgba(255, 0, 0, 0),rgba(255, 0, 0, 0));
+}
+
+
+

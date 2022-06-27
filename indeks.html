@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Javascript Experiment</title>
+</head>
+
+
+
+
+<!--Show Health Bar-->
+<body onload="ANJAY()"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+<!--Navbar Setting-->
+<nav class="bg-dark">
+    <div class="container text-center">
+        <h1 >Pokemon Fanmade Game</h1>
+    </div>
+  </nav>
+
+
+<!--Show Arena-->
+<section class= "container-fluid-md bg-arena" style="background-image:url('img/arena.png');">
+    <br /><br />
+
+
+<!--Health Bar Setting-->
+<div class="container-md">
+    <div class="row justify-content-between">
+        <div class="col-4 text-start">
+          <progress id="pHealthBar" class="lowHP" value="0"></progress>
+        </div>
+        <div class="col-4 text-end">
+            <progress id="comHealthBar" class="highHP"></progress>
+        </div>
+    </div>
+
+
+<!--HP Text-->
+    <div class="row justify-content-between">
+        <div class="col-4 text-start">
+            <h1 id="HP"></h1>
+        </div>
+        <div class="col-4 text-end">
+            <h1 id="comHP"></h1>
+        </div>
+    </div>
+    <br />
+
+
+<!--Character Setting-->
+<div class="row justify-content-between">
+    <div class="col-4 text-start">
+        <img id="player" src="img/PlayerPokemon.png" width="250px">
+    </div>
+    <div class="col-4 text-end">
+        <img src="img/ComputerPokemon.png" width="250px">
+    </div>
+</div>
+<br /><br />
+</section>
+
+
+<!--Action Button-->
+<section class="container-fluid btnBG"><br /><br /><br />
+    <div class="row justify-center">
+        <div class="col-md-3 text-center">
+    <button class="normalTypeMove" onclick="heal(pSPDstat,comSPDstat)">Recovery</button>
+        </div>
+        <div class="col-md-3 text-center">
+    <button class="flyingTypeMove" onclick="fly(pSPDstat,comSPDstat)">Fly</button>
+        </div>
+        <div class="col-md-3 text-center">
+    <button class="fireTypeMove" onclick="flamethrower(pSPDstat,comSPDstat)">Flamethrower</button>
+        </div>
+        <div class="col-md-3 text-center">
+    <button class="fireTypeMove" onclick="fireBlast(pSPDstat,comSPDstat)">Fire Blast</button>
+        </div>
+    </div>
+    <br /><br />
+</section>
+
+<footer><h3>Created by RamaAlim555</h3></footer>
+
+</body>
+</html>
