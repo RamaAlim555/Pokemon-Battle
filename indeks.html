@@ -8,11 +8,13 @@
     <title>Javascript Experiment</title>
 </head>
 
-
+<!--Speed Stats-->
+<div id="pSpeed" value=""></div>
+<div id="comSpeed" value=""></div>
 
 
 <!--Show Health Bar-->
-<body onload="ANJAY()"> 
+<body onload="ShowHP()"> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 
@@ -70,16 +72,16 @@
 <section class="container-fluid btnBG"><br /><br /><br />
     <div class="row justify-center">
         <div class="col-md-3 text-center">
-    <button class="normalTypeMove" onclick="heal(pSPDstat,comSPDstat)">Recovery</button>
+    <button class="normalTypeMove" onclick="heal()">Recovery</button>
         </div>
         <div class="col-md-3 text-center">
-    <button class="flyingTypeMove" onclick="fly(pSPDstat,comSPDstat)">Fly</button>
+    <button class="flyingTypeMove" onclick="fly()">Fly</button>
         </div>
         <div class="col-md-3 text-center">
-    <button class="fireTypeMove" onclick="flamethrower(pSPDstat,comSPDstat)">Flamethrower</button>
+    <button class="fireTypeMove" onclick="flamethrower()">Flamethrower</button>
         </div>
         <div class="col-md-3 text-center">
-    <button class="fireTypeMove" onclick="fireBlast(pSPDstat,comSPDstat)">Fire Blast</button>
+    <button class="fireTypeMove" onclick="fireBlast()">Fire Blast</button>
         </div>
     </div>
     <br /><br />

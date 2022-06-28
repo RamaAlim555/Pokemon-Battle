@@ -1,10 +1,3 @@
-function ANJAY()
-{
-    alert("There is still a speed bug. SORRY")
-    ShowHP();
-}
-
-
 //Player Stats
 var pATKstat = 30,
     pHPstat  =90,
@@ -27,14 +20,14 @@ var comATKstat = 30,
 function ShowHP()
 {
 /*Player HP Bar*/
-    if(pHPstat> pMaxHPstat/2)
+    if (pHPstat> pMaxHPstat/2)
     { 
         document.getElementById("pHealthBar").classList.remove("lowHP")
         document.getElementById("pHealthBar").classList.remove("mediumHP")
         document.getElementById("pHealthBar").classList.add('highHP');
     
     }
-    else if(pHPstat<= pMaxHPstat/2 && pHPstat >pMaxHPstat/5)
+    else if (pHPstat<= pMaxHPstat/2 && pHPstat >pMaxHPstat/5)
     {
         document.getElementById("pHealthBar").classList.remove("lowHP");
         document.getElementById("pHealthBar").classList.remove('highHP');
@@ -46,14 +39,14 @@ function ShowHP()
         document.getElementById("pHealthBar").classList.remove("mediumHP");
         document.getElementById("pHealthBar").classList.add("lowHP");
     }
-if(pHPstat>=pMaxHPstat)
+if (pHPstat>=pMaxHPstat)
     {
         pHPstat=pMaxHPstat
     }
 else
 {}
 /*Computer HP Bar*/
-    if(comHPstat> comMaxHPstat/2)
+    if (comHPstat> comMaxHPstat/2)
     { 
         document.getElementById("comHealthBar").classList.remove("lowHP")
         document.getElementById("comHealthBar").classList.remove("mediumHP")
@@ -73,13 +66,13 @@ else
         document.getElementById("comHealthBar").classList.add("lowHP");
     }
 
-if(comHPstat>=comMaxHPstat)
+if (comHPstat>=comMaxHPstat)
     {
         comHPstat=comMaxHPstat
     }
 else
     {}
-/*HP BAR*/
+/*HP String*/
 document.getElementById("HP").innerHTML = (pHPstat + "/" + pMaxHPstat);
 document.getElementById("pHealthBar").value = (pHPstat/pMaxHPstat);
 document.getElementById("comHealthBar").value = (comHPstat/comMaxHPstat);
@@ -89,13 +82,13 @@ return;
 //DeathCondition
 function deathDetector()
 {
-    if(pHPstat<=0)
+    if (pHPstat<=0)
     {
         alert("~~~~~ YOU LOSE!!! ~~~~~~");
         console.log("~~~~~ YOU LOSE!!! ~~~~~~")
         alert("Refresh this page to play again");
     }
-    else if(comHPstat<=0)
+    else if (comHPstat<=0)
     {
         alert("~~~~~ You Win!!! ~~~~~");
         console.log("~~~~~ You Win!!! ~~~~~")
@@ -105,7 +98,7 @@ function deathDetector()
 }
 
 //Computer Move Randomizer
-function comheal(PlayerSpeed,BotSpeed)
+function comheal()
 {
     comDamageDealt = 0;
     comHPstat += comRGNstat;
@@ -113,43 +106,46 @@ function comheal(PlayerSpeed,BotSpeed)
     console.log("Bot use heal");
     console.log("Bot get some HP and +2 Speed");
 }
-function comfly(PlayerSpeed,BotSpeed)
+function comfly()
 {
     comDamageDealt=10;
     console.log("Bot use Fly");
-    console.log("Your SPD "+PlayerSpeed+" VS Bot Speed "+BotSpeed)
-        if(PlayerSpeed=BotSpeed)
-            {
-                if(0.5>=Math.random())
-                {
-                    pDamageDealt=0
-                    console.log("Same Speed 50% rate. Success Bot not take damage");
-                }
-                else
-                {
-                    console.log("Same Speed 50% rate. Bot Failed");
-                }
-            }
-        else if(PlayerSpeed>BotSpeed)
+    console.log("Your SPD "+pSPDstat+" VS Bot Speed "+comSPDstat)
+        if (pSPDstat != comSPDstat)
+        {
+            if (pSPDstat>comSPDstat)
             {
                 console.log("Bot failed use fly");
             }
-        else
+            else
             {
                 pDamageDealt =0
                 console.log("Bot success use fly, and not take damage");
             }
+        }
+        else
+        {
+            if (0.5>=Math.random())
+            {
+                    pDamageDealt=0
+                    console.log("Same Speed 50% rate. Success Bot not take damage");
+            }
+            else
+            {
+                    console.log("Same Speed 50% rate. Bot Failed");
+            }
+        }
     comSPDstat-=1;
     console.log("Bot Speed -1");
 }
 
-function comflamethrower(PlayerSpeed,BotSpeed)
+function comflamethrower()
 {
     comDamageDealt=pATKstat
     console.log("Bot Use Flamethrower")
 }
 
-function comfireBlast(PlayerSpeed,BotSpeed)
+function comfireBlast()
 {
     if(Math.random()>0.5)
     {
@@ -160,34 +156,34 @@ function comfireBlast(PlayerSpeed,BotSpeed)
     comDamageDealt=pATKstat/2
     console.log("Bot use Fire Blast")
 }
-function comMove(PlayerSpeed,BotSpeed)
+function comMove(pSPDstat,comSPDstat)
 {
-    if(Math.random()>0.75)
+    if (Math.random()>0.75)
     {
-        comheal(PlayerSpeed,BotSpeed);
+        comheal();
     }
-    else if(Math.random()>0.5)
+    else if (Math.random()>0.5)
     {
-        comfly(PlayerSpeed,BotSpeed);
+        comfly();
     }
-    else if(Math.random()>0.25)
+    else if (Math.random()>0.25)
     {
-        comflamethrower(PlayerSpeed,BotSpeed);
+        comflamethrower();
     }
-    else if(Math.random()>=0)
+    else if (Math.random()>=0)
     {
-        comfireBlast(PlayerSpeed,BotSpeed);
+        comfireBlast();
     }
 }
 
 //Player Move
 //--Speed-Battle--
-function attack(PlayerSpeed,BotSpeed)
+function attack()
 {
-    console.log("Your SPD "+PlayerSpeed+" VS Bot Speed "+BotSpeed)
-    if(PlayerSpeed=BotSpeed)
+    console.log("Your SPD "+pSPDstat+" VS Bot Speed "+comSPDstat)
+    if (pSPDstat=comSPDstat)
     {
-        if(0.5>=Math.random())
+        if (0.5>=Math.random())
         {
             comHPstat-=pDamageDealt;
             console.log("You deal "+pDamageDealt+" damage");
@@ -206,7 +202,7 @@ function attack(PlayerSpeed,BotSpeed)
             deathDetector();
         }
     }
-    else if(PlayerSpeed>BotSpeed)
+    else if (pSPDstat>comSPDstat)
     {
         comHPstat-=pDamageDealt;
         console.log("You deal "+pDamageDealt+" damage");
@@ -228,11 +224,11 @@ ShowHP();
 }
 
 //RECOVERY (Heal)//
-function heal(PlayerSpeed,BotSpeed)
+function heal()
 {
         pDamageDealt=0;
         comMove();
-        attack(PlayerSpeed,BotSpeed);
+        attack();
         pHPstat += pRGNstat;
         pSPDstat += 2
         console.log("You use recovery. Your speed +2 and your HP +"+pRGNstat)
@@ -242,25 +238,48 @@ function heal(PlayerSpeed,BotSpeed)
 
 //Fly Low Damage Gacha Immune 100% Immune klo menang speed (setelah dipakai speed-1)
 
-function fly(PlayerSpeed,BotSpeed)
+function fly()
 {
+    
         pDamageDealt=10;
         console.log("You use fly")
-        console.log("Your SPD "+PlayerSpeed+" VS Bot Speed "+BotSpeed)
-        comMove(PlayerSpeed,BotSpeed);
-        if(PlayerSpeed = BotSpeed)
+        comMove();
+        if (pSPDstat != comSPDstat)
+        {
+            if (pSPDstat>comSPDstat)
             {
-                if(0.5>=Math.random())
-                {
+                console.log("Your SPD "+pSPDstat+" VS Bot Speed "+comSPDstat)
+                console.log("You success use fly and not take damage");
+                comHPstat-= pDamageDealt;
+                console.log("You deal "+pDamageDealt+" damage");
+                deathDetector();
+                comDamageDealt=0;
+                console.log("Bot deal "+comDamageDealt+" damage");
+            }
+        else
+            {
+                console.log("You failed use fly");
+                pHPstat-= comDamageDealt;
+                console.log("Bot deal "+comDamageDealt+" damage");
+                deathDetector();
+                comHPstat-= pDamageDealt;
+                deathDetector();
+                console.log("You deal "+pDamageDealt+" damage");
+            }
+        }
+        else
+        {
+            if (0.5>=Math.random())
+            {
                     comHPstat-=pDamageDealt ;
                     comDamageDealt=0;
                     console.log("Same Speed 50% rate. Success You not take damage");
                     console.log("You deal "+pDamageDealt+" damage")
                     deathDetector();
                     console.log("Bot deal "+comDamageDealt+" damage")
-                }
-                else
-                {
+            }
+            else
+            {
                     console.log("Same Speed 50% rate. You failed");
                     pHPstat-=comDamageDealt;
                     console.log("Bot deal "+comDamageDealt+" damage");
@@ -268,9 +287,9 @@ function fly(PlayerSpeed,BotSpeed)
                     comHPstat-=pDamageDealt;
                     console.log("You deal "+pDamageDealt+" damage");
                     deathDetector();
-                }
             }
-        else if(PlayerSpeed>BotSpeed)
+        }
+        if (pSPDstat>comSPDstat)
             {
                 console.log("You success use fly and not take damage");
                 comHPstat-= pDamageDealt;
@@ -297,7 +316,7 @@ function fly(PlayerSpeed,BotSpeed)
 //Flamethrower Damage = Atk Stat
 function flamethrower()
 {
-    pDamageDealt=pATKstat
+    pDamageDealt=pATKstat;
     console.log("You use Flamethrower")
     comMove();
     attack();
