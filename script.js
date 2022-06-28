@@ -1,40 +1,78 @@
+//Console Log Converter
+function logConvert()
+{
+/// 1 Turn Batlle Log
+
+// Full Battle Log
+    var old = console.log;
+    var logger = document.getElementById('battle-log');
+    console.log = function (message) {
+        if (typeof message == 'object') {
+            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : message) + '<br />';
+        } else {
+            logger.innerHTML += message + '<br />';
+        }
+    }
+    logger.innerHTML += "<br /><br /> <b>Next Turn</b> <br /><br />"
+}
+
+
+//Show Hidden Battel Log
+function showHidden()
+{
+    document.getElementById("battle-log").classList.toggle("hidden")
+}
+///
+///
+///
 //Player Stats
-var pATKstat = 30,
-    pHPstat  =90,
-    pMaxHPstat  = 100,
-    pDEFstat = 2,
-    pSPDstat = 10.000,
-    pRGNstat = 40,
+var pATKstat = 55,
+    pHPstat  =215,
+    pMaxHPstat  = 215,
+    pDEFstat = 50,
+    pSPDstat = 60,
+    pRGNstat = 2*pDEFstat,
     pDamageDealt;
 
 //Bot Stats
-var comATKstat = 30,
-    comHPstat  = 100,
-    comDEFstat = 2,
+var comATKstat = 60,
+    comHPstat  = 255,
+    comDEFstat = 40,
     comSPDstat = 10.000,
-    comMaxHPstat = 100,
-    comRGNstat = 40,
+    comMaxHPstat = 255,
+    comRGNstat = 2*comDEFstat,
     comDamageDealt;
 
 //HP Bar
 function ShowHP()
 {
 /*Player HP Bar*/
-    if (pHPstat> pMaxHPstat/2)
+    if (pHPstat > 90/100)
+    {
+        document.getElementById("pHealthBar").classList.remove("lowHP");
+        document.getElementById("pHealthBar").classList.remove("mediumHP");
+        document.getElementById("pHealthBar").classList.remove('highHP');
+        document.getElementById("pHealthBar").classList.add('90%HP');
+    }
+    else if (pHPstat> pMaxHPstat/2)
     { 
-        document.getElementById("pHealthBar").classList.remove("lowHP")
-        document.getElementById("pHealthBar").classList.remove("mediumHP")
+        document.getElementById("pHealthBar").classList.remove("lowHP");
+        document.getElementById("pHealthBar").classList.remove("mediumHP");
+        document.getElementById("pHealthBar").classList.remove('90%HP');
         document.getElementById("pHealthBar").classList.add('highHP');
-    
+        
     }
     else if (pHPstat<= pMaxHPstat/2 && pHPstat >pMaxHPstat/5)
     {
+        {document.getElementById("pHealthBar").classList.remove('90%HP');}
+        {document.getElementById("pHealthBar").classList.remove('90%HP');}
         document.getElementById("pHealthBar").classList.remove("lowHP");
         document.getElementById("pHealthBar").classList.remove('highHP');
         document.getElementById("pHealthBar").classList.add("mediumHP");
     }
     else
     {
+        {document.getElementById("pHealthBar").classList.remove('90%HP');}
         document.getElementById("pHealthBar").classList.remove('highHP');
         document.getElementById("pHealthBar").classList.remove("mediumHP");
         document.getElementById("pHealthBar").classList.add("lowHP");
@@ -43,24 +81,34 @@ if (pHPstat>=pMaxHPstat)
     {
         pHPstat=pMaxHPstat
     }
-else
-{}
+
 /*Computer HP Bar*/
-    if (comHPstat> comMaxHPstat/2)
+    if (comHPstat > 90/100)
+    {
+        document.getElementById("comHealthBar").classList.remove("lowHP");
+        document.getElementById("comHealthBar").classList.remove('highHP');
+        document.getElementById("comHealthBar").classList.remove("mediumHP");
+        document.getElementById("comHealthBar").classList.add('90%HP');
+    }
+
+    else if (comHPstat> comMaxHPstat/2)
     { 
-        document.getElementById("comHealthBar").classList.remove("lowHP")
-        document.getElementById("comHealthBar").classList.remove("mediumHP")
+        document.getElementById("comHealthBar").classList.remove("lowHP");
+        document.getElementById("comHealthBar").classList.remove("mediumHP");
+        {document.getElementById("comHealthBar").classList.remove('90%HP');}
         document.getElementById("comHealthBar").classList.add('highHP');
 
     }
     else if(comHPstat<= comMaxHPstat/2 && comHPstat >comMaxHPstat/5)
     {
+        document.getElementById("comHealthBar").classList.remove('90%HP');
         document.getElementById("comHealthBar").classList.remove("lowHP");
         document.getElementById("comHealthBar").classList.remove('highHP');
         document.getElementById("comHealthBar").classList.add("mediumHP");
     }
     else
     {
+        document.getElementById("comHealthBar").classList.remove('90%HP');
         document.getElementById("comHealthBar").classList.remove('highHP');
         document.getElementById("comHealthBar").classList.remove("mediumHP");
         document.getElementById("comHealthBar").classList.add("lowHP");
@@ -70,8 +118,7 @@ if (comHPstat>=comMaxHPstat)
     {
         comHPstat=comMaxHPstat
     }
-else
-    {}
+
 /*HP String*/
 document.getElementById("HP").innerHTML = (pHPstat + "/" + pMaxHPstat);
 document.getElementById("pHealthBar").value = (pHPstat/pMaxHPstat);
@@ -153,8 +200,10 @@ function comfireBlast()
     console.log("Bot Use Fire Blast Critical")
     }
     else
+    {
     comDamageDealt=pATKstat/2
     console.log("Bot use Fire Blast")
+    }
 }
 function comMove(pSPDstat,comSPDstat)
 {
@@ -240,7 +289,7 @@ function heal()
 
 function fly()
 {
-    
+    logConvert();
         pDamageDealt=10;
         console.log("You use fly")
         comMove();
@@ -316,9 +365,29 @@ function fly()
 //Flamethrower Damage = Atk Stat
 function flamethrower()
 {
+    logConvert();
     pDamageDealt=pATKstat;
-    console.log("You use Flamethrower")
     comMove();
+    console.log("You use Flamethrower")
     attack();
 
+}
+
+//Fire Blast Damage = 50% Atk Stat || 200% Atk Stat
+function fireBlast()
+{
+    logConvert();
+    if(Math.random()>0.5)
+    {
+    pDamageDealt=pATKstat * 2
+    comMove();
+    console.log("You Use Fire Blast Critical")
+    }
+    else
+    {
+    pDamageDealt=pATKstat/2
+    comMove();
+    console.log("You use Fire Blast")
+    }
+    attack();
 }
